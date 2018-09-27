@@ -20,7 +20,7 @@
 		document.body.appendChild( renderer.domElement );   //Al mover todo el JS a un archivo individual, esta línea me lanza error
 
 		material = new createMeshBasicMaterial(new THREE.Color(0x901010));
-		testGeometry = new createCubeGeometry(1,1,1);
+		testGeometry = new THREE.BoxGeometry(1,1,1);
 		//testGeometry = new createSphereGeometry(12,20,20);   //Al alternar el comentario entre la línea 23 y 24 se renderiza o un Cubo (funciona) o Sphera (No renderiza)
 		mesh = new createMesh( testGeometry, material );  
 		axis = THREE.AxisHelper(5);
