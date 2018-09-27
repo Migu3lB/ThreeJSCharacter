@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Objetos - 3JS</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/main-css.css" />
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/three.min.js"></script>
+	<script src="js/Script.js"></script>
+</head>
+<body>
+	<script>
+		var scene, perspectiveCamera, renderer, material, axis, mesh, testGeometry;
+
+		scene = new createScene();
+		perspectiveCamera = new createPerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+		perspectiveCamera.position.z = 3;
+
+		renderer = new createRendeder();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		document.body.appendChild( renderer.domElement );   //Al mover todo el JS a un archivo individual, esta línea me lanza error
+
+		material = new createMeshBasicMaterial(new THREE.Color(0x901010));
+		//testGeometry = new createCubeGeometry(1,1,1);
+		testGeometry = new createSphereGeometry(12,20,20);   //Al alternar el comentario entre la línea 23 y 24 se renderiza o un Cubo (funciona) o Sphera (No renderiza)
+		mesh = new createMesh( testGeometry, material );  
+		axis = THREE.AxisHelper(5);
+
+		scene.add(mesh);
+		scene.add(axis);
+		scene.background = new THREE.Color( 0xf0f0f0 );
+
+
+		function animate () {
+			requestAnimationFrame( animate );
+			mesh.rotation.x += 0.01;
+			mesh.rotation.y += 0.01;
+			render();
+		};
+		animate();
+	</script>
+</body>
+</html>
